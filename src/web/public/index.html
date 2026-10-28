@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>货眼</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">货</div>
+          <div>
+            <h1>货眼</h1>
+            <p>本地采集结果</p>
+          </div>
+        </div>
+
+        <div class="toolbar">
+          <button id="refreshButton" type="button">刷新</button>
+        </div>
+
+        <div id="batchList" class="batch-list" aria-label="采集批次"></div>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <div id="batchTitle" class="batch-title">选择一个采集批次</div>
+            <div id="batchMeta" class="batch-meta">读取 data/raw 下的 JSONL 文件</div>
+          </div>
+          <div id="stats" class="stats"></div>
+        </header>
+
+        <section class="filters" aria-label="筛选条件">
+          <label>
+            搜索
+            <input id="textFilter" type="search" placeholder="标题、简介、卖家、地区">
+          </label>
+          <label>
+            标签
+            <select id="labelFilter">
+              <option value="">全部</option>
+              <option value="green">green</option>
+              <option value="yellow">yellow</option>
+              <option value="purple">purple</option>
+              <option value="red">red</option>
+              <option value="gray">gray</option>
+            </select>
+          </label>
+          <label>
+            最低分
+            <input id="minScoreFilter" type="number" min="0" max="100" step="1" placeholder="0">
+          </label>
+          <label>
+            排序
+            <select id="sortSelect">
+              <option value="score-desc">分数高到低</option>
+              <option value="score-asc">分数低到高</option>
+              <option value="price-asc">价格低到高</option>
+              <option value="price-desc">价格高到低</option>
+              <option value="id-asc">原始顺序</option>
+            </select>
+          </label>
+        </section>
+
+        <section class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th class="col-image">图</th>
+                <th>商品</th>
+                <th>价格</th>
+                <th>标签</th>
+                <th>分数</th>
+                <th>地区</th>
+                <th>卖家</th>
+                <th>风险 / 加分</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody id="itemsBody"></tbody>
+          </table>
+          <div id="emptyState" class="empty-state">暂无数据</div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+node_modules/
+.venv/
+__pycache__/
+*.py[cod]
+.env
+.env.*
+!.env.example
+data/
+output/
+outputs/
+work/
+*.log
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

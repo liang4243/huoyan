@@ -1,0 +1,1 @@
+"""HuoYan browser controller."""

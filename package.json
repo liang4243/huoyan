@@ -1,0 +1,51 @@
+{
+  "name": "huoyan",
+  "version": "0.1.0",
+  "description": "Local DOM extractor for shopping and second-hand item lists.",
+  "main": "src/cli.js",
+  "type": "commonjs",
+  "bin": {
+    "huoyan": "src/cli.js",
+    "huoyan-mcp": "src/mcp.js"
+  },
+  "scripts": {
+    "collect": "node src/cli.js collect",
+    "chrome:cdp": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/start-chrome-cdp.ps1 -KeepAlive",
+    "mcp": "node src/mcp.js",
+    "web": "node src/web/server.js",
+    "check": "node src/cli.js --help",
+    "test": "node scripts/test-item-actions.cjs && node scripts/test-item-flow.cjs && node scripts/test-search-reuse.cjs && node scripts/test-product-tabs.cjs && node scripts/test-scroll.cjs && node scripts/test-homepage-mouse.cjs && node scripts/test-sku-collage.cjs && node scripts/test-direct.cjs",
+    "edge:cdp": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/start-chrome-cdp.ps1 -KeepAlive",
+    "edge:manual-direct": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/start-edge-manual-direct.ps1 -KeepAlive",
+    "python:check": ".venv\\Scripts\\python.exe huoyan.py status",
+    "test:python": ".venv\\Scripts\\python.exe -X utf8 scripts/test-python-controller.py && .venv\\Scripts\\python.exe -X utf8 scripts/test-shopping-research.py",
+    "test:research": ".venv\\Scripts\\python.exe -X utf8 scripts/test-shopping-research.py",
+    "test:research:mcp": "node scripts/test-research-mcp.cjs",
+    "test:chat": ".venv\\Scripts\\python.exe -X utf8 scripts/test-merchant-chat.py",
+    "test:inbox": ".venv\\Scripts\\python.exe -X utf8 scripts/test-merchant-inbox.py",
+    "test:focus": ".venv\\Scripts\\python.exe -X utf8 scripts/test-tab-focus.py",
+    "test:tab-budget": ".venv\\Scripts\\python.exe -X utf8 scripts/test-tab-budget.py",
+    "test:detail": ".venv\\Scripts\\python.exe -X utf8 scripts/test-detail-research.py",
+    "test:shop": ".venv\\Scripts\\python.exe -X utf8 scripts/test-shop-research.py",
+    "test:evidence": ".venv\\Scripts\\python.exe -X utf8 scripts/test-commerce-evidence.py",
+    "test:images": ".venv\\Scripts\\python.exe -X utf8 scripts/test-image-research.py",
+    "test:state": ".venv\\Scripts\\python.exe -X utf8 scripts/test-state-store.py",
+    "test:wording": ".venv\\Scripts\\python.exe -X utf8 scripts/test-merchant-wording.py",
+    "wording:compare": ".venv\\Scripts\\python.exe -X utf8 scripts/compare-merchant-wording.py",
+    "test:favorites": ".venv\\Scripts\\python.exe -X utf8 scripts/test-favorites.py"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "commander": "^12.1.0",
+    "dayjs": "^1.11.19",
+    "fs-extra": "^11.3.2",
+    "iconv-lite": "^0.6.3",
+    "playwright": "^1.57.0",
+    "zod": "^4.4.3"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT",
+  "private": true
+}
